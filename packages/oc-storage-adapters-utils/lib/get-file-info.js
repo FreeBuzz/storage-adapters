@@ -12,8 +12,13 @@ module.exports = function(filePath) {
     isGzipped = true;
     ext = path.extname(filePath.slice(0, -3)).toLowerCase();
   }
+  if (ext === '.br') {
+    isBrCompressed = true;
+    ext = path.extname(filePath.slice(0, -3)).toLowerCase();
+  }
 
   return {
+    br: isBrCompressed,
     gzip: isGzipped,
     extname: ext,
     mimeType: getMimeType(ext)
